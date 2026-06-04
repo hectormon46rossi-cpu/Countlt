@@ -167,7 +167,7 @@ app.get("/api/groups/:id/stats", auth, (req, res) => {
     ranking_today: buildRanking(todayLogs),
     drink_totals: drinkTotals(allLogs),
     drink_totals_today: drinkTotals(todayLogs),
-    recent_photos: allLogs.filter(l => l.photo).slice(-20).reverse(),
+    recent_photos: allLogs.filter(l => l.photo).reverse(),
     my_logs: allLogs.filter(l => l.user_id === req.user.id),
   });
 });

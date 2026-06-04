@@ -105,9 +105,9 @@ export default function GroupDetail({ token, username, userId, group: initialGro
         <div className="logo" style={{ fontSize: 16 }}>{group.name}</div>
         <div style={{ fontSize: 11, background: "rgba(167,139,250,0.15)", color: "var(--accent)", borderRadius: 6, padding: "3px 8px", letterSpacing: 2, fontWeight: 700 }}>{group.code}</div>
         <nav className="nav" style={{ width: "100%", justifyContent: "center" }}>
-          {["counter","ranking","stats","settings"].map(v => (
+          {["counter","ranking","gallery","stats","settings"].map(v => (
             <button key={v} className={`nav-btn ${view === v ? "active" : ""}`} onClick={() => { setView(v); if (v !== "counter") loadStats(); }}>
-              {{ counter: "Mis copas", ranking: "Ranking", stats: "Stats", settings: "⚙️" }[v]}
+              {{ counter: "Mis copas", ranking: "Ranking", gallery: "📸 Galería", stats: "Stats", settings: "⚙️" }[v]}
             </button>
           ))}
         </nav>
@@ -191,6 +191,31 @@ export default function GroupDetail({ token, username, userId, group: initialGro
       )}
 
       {/* ── STATS ── */}
+      {/* ── GALERÍA ── */}
+      {view === "gallery" && stats && (
+        <main className="main">
+          {stats.recent_photos.length === 0 ? (
+            <div className="empty"><span>📷</span><p>Aún no hay fotos en este grupo.</p></div>
+          ) : (
+            <>
+              <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 4 }}>{stats.recent_photos.length} fotos del grupo</p>
+              <div className="gallery-grid">
+                {stats.recent_photos.map((entry) => (
+                  <div key={entry.id} className="gallery-item">
+                    <img src={entry.photo} alt="" className="gallery-img" />
+                    <div className="gallery-info">
+                      <span className="gallery-user">{entry.username}</span>
+                      <span className="gallery-drink" style={{ color: entry.drink_color }}>{entry.drink_emoji}</span>
+                      <span className="gallery-time">{entry.time}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </main>
+      )}
+
       {view === "stats" && stats && (
         <main className="main">
           <div className="summary-total">
