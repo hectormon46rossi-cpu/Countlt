@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎉 CountIt — Contador de consumiciones para fiestas
 
 App para llevar el control de copas por invitado en tiempo real.
@@ -46,3 +47,6 @@ CountIt/
     ├── App.jsx      ← lógica principal
     └── App.css      ← estilos
 ```
+=======
+# Countlt
+>>>>>>> e4d96981de3b755c18580893c0aecea1e05d1499
