@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "id": 1780521198868,
+      "username": "mountain",
+      "email": "hector.mon46rossi@gmail.com",
+      "password": "$2a$10$QY7vsYMDt7TudlR4YJv9kejS1AIXi/pPUjuDM834afCX7r8yJ2zJq"
+    }
+  ],
+  "guests": [],
+  "drink_counts": [],
+  "photo_log": [],
+  "groups": [
+    {
+      "id": 1780521955272,
+      "name": "Donant lo Callo",
+      "code": "UJCMEL",
+      "owner_id": 1780521198868,
+      "drinks": [
+        {
+          "id": "cubata",
+          "label": "Cubata",
+          "emoji": "🥃",
+          "color": "#f59e0b",
+          "points": 5
+        },
+        {
+          "id": "beer",
+          "label": "Cerveza",
+          "emoji": "🍺",
+          "color": "#eab308",
+          "points": 2
+        },
+        {
+          "id": "shot",
+          "label": "Chupito",
+          "emoji": "🔥",
+          "color": "#ef4444",
+          "points": 1
+        },
+        {
+          "id": "wine",
+          "label": "Vino",
+          "emoji": "🍷",
+          "color": "#9f1239",
+          "points": 3
+        },
+        {
+          "id": "cocktail",
+          "label": "Cóctel",
+          "emoji": "🍹",
+          "color": "#06b6d4",
+          "points": 4
+        },
+        {
+          "id": "soda",
+          "label": "Refresco",
+          "emoji": "🥤",
+          "color": "#10b981",
+          "points": 0
+        }
+      ],
+      "created_at": "2026-06-03T21:25:55.272Z"
+    }
+  ],
+  "members": [
+    {
+      "id": 1780521955274,
+      "group_id": 1780521955272,
+      "user_id": 1780521198868,
+      "role": "admin"
+    }
+  ],
+  "drink_log": []
+}
