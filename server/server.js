@@ -49,8 +49,8 @@ app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
   const user = db.get("users").find({ email: email?.toLowerCase() }).value();
   if (!user || !bcrypt.compareSync(password, user.password)) return res.status(401).json({ error: "Email o contraseña incorrectos" });
-  const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: "7d" });
-  res.json({ token, username: user.username });
+  const token = jwt.sign({ id: user.id, username: user ? user.username : req.user.username }, JWT_SECRET, { expiresIn: "7d" });
+  res.json({ token, username: user ? user.username : req.user.username });
 });
 
 // ─── Groups ───────────────────────────────────────────────────────────────────
@@ -120,7 +120,8 @@ app.post("/api/groups/:id/log", auth, (req, res) => {
   if (!drink) return res.status(400).json({ error: "Bebida no encontrada" });
   const user = db.get("users").find({ id: req.user.id }).value();
   const entry = {
-    id: Date.now(), group_id: gid, user_id: req.user.id, username: user.username,
+    id: Date.now(), group_id: gid, user_id: req.user.id, 
+    username: user ? user.username : req.user.username,
     drink_id: drinkId, drink_label: drink.label, drink_emoji: drink.emoji,
     drink_color: drink.color, points: drink.points, photo: photo || null,
     date: new Date().toISOString().split("T")[0],
